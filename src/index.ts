@@ -1,7 +1,7 @@
-import { createApp } from './app.js';
-import { env } from './config/env.js';
-import { closeDb } from './db/index.js';
-import { closeRedis, connectRedis } from './redis/index.js';
+import { createApp } from '@/app';
+import { env } from '@/config/env';
+import { closeDb } from '@/db';
+import { closeRedis, connectRedis } from '@/redis';
 
 async function main() {
   await connectRedis();
@@ -24,7 +24,7 @@ async function main() {
   process.on('SIGTERM', () => void shutdown('SIGTERM'));
 }
 
-main().catch(error => {
+main().catch((error) => {
   console.error('Failed to start server:', error);
   process.exit(1);
 });

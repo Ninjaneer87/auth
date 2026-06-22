@@ -25,6 +25,22 @@ const config = defineConfig(
       },
     },
   },
+  {
+    files: ['src/**/*.ts'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              group: ['../*', './*'],
+              message: 'Use the @/ path alias for internal imports.',
+            },
+          ],
+        },
+      ],
+    },
+  },
 );
 
 export default config;

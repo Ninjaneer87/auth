@@ -12,7 +12,7 @@
   "scripts": {
     "preinstall": "node -e \"if(!process.env.npm_config_user_agent?.includes('pnpm')){console.error('Use pnpm to install dependencies.');process.exit(1)}\"",
     "dev": "tsx watch src/index.ts",
-    "build": "tsc",
+    "build": "tsc && tsc-alias",
     "typecheck": "tsc --noEmit",
     "start": "node dist/index.js",
     "db:generate": "drizzle-kit generate",
@@ -44,6 +44,7 @@
     "globals": "^17.6.0",
     "prettier": "^3.8.4",
     "tsx": "^4.22.4",
+    "tsc-alias": "^1.8.16",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.61.1"
   }

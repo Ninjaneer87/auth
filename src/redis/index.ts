@@ -1,20 +1,20 @@
 import { createClient } from 'redis';
-import { env } from '../config/env.js';
+import { env } from '@/config/env';
 
-export const redis = createClient({ url: env.REDIS_URL });
+export const redisClient = createClient({ url: env.REDIS_URL });
 
-redis.on('error', error => {
+redisClient.on('error', (error: Error) => {
   console.error('Redis client error:', error);
 });
 
 export async function connectRedis(): Promise<void> {
-  if (!redis.isOpen) {
-    await redis.connect();
+  if (!redisClient.isOpen) {
+    await redisClient.connect();
   }
 }
 
 export async function closeRedis(): Promise<void> {
-  if (redis.isOpen) {
-    await redis.quit();
+  if (redisClient.isOpen) {
+    await redisClient.quit();
   }
 }

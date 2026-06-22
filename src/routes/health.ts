@@ -1,7 +1,7 @@
 import { Router, type IRouter } from 'express';
 import { sql } from 'drizzle-orm';
-import { db } from '../db/index.js';
-import { redis } from '../redis/index.js';
+import { db } from '@/db';
+import { redisClient } from '@/redis';
 
 export const healthRouter: IRouter = Router();
 
@@ -19,7 +19,7 @@ healthRouter.get('/', async (_req, res) => {
   }
 
   try {
-    await redis.ping();
+    await redisClient.ping();
     checks.redis = 'ok';
   } catch {
     checks.redis = 'error';
