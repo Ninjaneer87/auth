@@ -23,12 +23,12 @@ Copy the example env file and adjust values if needed:
 cp .env.example .env
 ```
 
-| Variable       | Description                          | Default                                              |
-| -------------- | ------------------------------------ | ---------------------------------------------------- |
-| `NODE_ENV`     | Runtime environment                  | `development`                                        |
-| `PORT`         | HTTP server port                     | `3000`                                               |
-| `DATABASE_URL` | PostgreSQL connection string         | `postgres://postgres:postgres@localhost:5432/auth` |
-| `REDIS_URL`    | Redis connection string              | `redis://localhost:6379`                             |
+| Variable       | Description                  | Default                                            |
+| -------------- | ---------------------------- | -------------------------------------------------- |
+| `NODE_ENV`     | Runtime environment          | `development`                                      |
+| `PORT`         | HTTP server port             | `3000`                                             |
+| `DATABASE_URL` | PostgreSQL connection string | `postgres://postgres:postgres@localhost:5432/auth` |
+| `REDIS_URL`    | Redis connection string      | `redis://localhost:6379`                           |
 
 ### 3. Start infrastructure
 
@@ -57,21 +57,25 @@ The API will be available at [http://localhost:3000](http://localhost:3000).
 
 ## Scripts
 
-| Command              | Description                              |
-| -------------------- | ---------------------------------------- |
-| `npm run dev`        | Start dev server with hot reload         |
-| `npm run build`      | Compile TypeScript to `dist/`            |
-| `npm start`          | Run compiled production build            |
-| `npm run db:generate`| Generate migration from schema changes   |
-| `npm run db:migrate` | Apply pending migrations                 |
-| `npm run db:studio`  | Open Drizzle Studio (database browser)   |
+| Command                | Description                            |
+| ---------------------- | -------------------------------------- |
+| `npm run dev`          | Start dev server with hot reload       |
+| `npm run build`        | Compile TypeScript to `dist/`          |
+| `npm start`            | Run compiled production build          |
+| `npm run db:generate`  | Generate migration from schema changes |
+| `npm run db:migrate`   | Apply pending migrations               |
+| `npm run db:studio`    | Open Drizzle Studio (database browser) |
+| `npm run lint`         | Run ESLint                             |
+| `npm run lint:fix`     | Run ESLint and auto-fix issues         |
+| `npm run format`       | Format code with Prettier              |
+| `npm run format:check` | Check formatting with Prettier         |
 
 ## API
 
-| Method | Path      | Description                        |
-| ------ | --------- | ---------------------------------- |
-| `GET`  | `/`       | API welcome message                |
-| `GET`  | `/health` | Health check (Postgres + Redis)    |
+| Method | Path      | Description                     |
+| ------ | --------- | ------------------------------- |
+| `GET`  | `/`       | API welcome message             |
+| `GET`  | `/health` | Health check (Postgres + Redis) |
 
 Example:
 
