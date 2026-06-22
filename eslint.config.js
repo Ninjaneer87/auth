@@ -4,7 +4,7 @@ import { defineConfig } from 'eslint/config';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
-export default defineConfig(
+const config = defineConfig(
   {
     ignores: ['dist/**', 'node_modules/**', 'drizzle/**'],
   },
@@ -26,3 +26,5 @@ export default defineConfig(
     },
   },
 );
+
+export default config;
