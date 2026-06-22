@@ -1,9 +1,9 @@
 {
   "name": "auth",
   "version": "1.0.0",
-  "description": "Authentication app with Express, Drizzle, and Redis",
+  "private": true,
   "type": "module",
-  "main": "dist/index.js",
+  "description": "Authentication monorepo with Express server and React client",
   "packageManager": "pnpm@11.8.0",
   "engines": {
     "node": ">=20",
@@ -11,41 +11,28 @@
   },
   "scripts": {
     "preinstall": "node -e \"if(!process.env.npm_config_user_agent?.includes('pnpm')){console.error('Use pnpm to install dependencies.');process.exit(1)}\"",
-    "dev": "tsx watch src/index.ts",
-    "build": "tsc && tsc-alias",
-    "typecheck": "tsc --noEmit",
-    "start": "node dist/index.js",
-    "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate",
-    "db:studio": "drizzle-kit studio",
+    "dev": "turbo dev",
+    "dev:server": "turbo dev --filter=server",
+    "dev:client": "turbo dev --filter=client",
+    "build": "turbo build",
+    "typecheck": "turbo typecheck",
+    "start": "turbo start --filter=server",
+    "db:generate": "dotenv -e packages/server/.env -- pnpm --filter @andrejground/auth db:generate",
+    "db:migrate": "dotenv -e packages/server/.env -- pnpm --filter @andrejground/auth db:migrate",
+    "db:studio": "dotenv -e packages/server/.env -- pnpm --filter @andrejground/auth db:studio",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "dotenv": "^17.4.2",
-    "drizzle-orm": "^0.45.2",
-    "express": "^5.2.1",
-    "postgres": "^3.4.9",
-    "redis": "^6.0.0",
-    "zod": "^4.4.3"
-  },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@types/express": "^5.0.6",
-    "@types/node": "^26.0.0",
-    "drizzle-kit": "^0.31.10",
+    "dotenv-cli": "^11.0.0",
     "eslint": "^10.5.0",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^17.6.0",
     "prettier": "^3.8.4",
-    "tsx": "^4.22.4",
-    "tsc-alias": "^1.8.16",
-    "typescript": "^6.0.3",
-    "typescript-eslint": "^8.61.1"
+    "turbo": "^2.8.12",
+    "typescript-eslint": "^8.45.0"
   }
 }

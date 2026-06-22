@@ -1,6 +1,8 @@
 node_modules/
-dist/
+**/dist/
+**/*.tsbuildinfo
+.turbo/
 .env
 .env.local
-drizzle/meta/
+packages/auth/drizzle/meta/
 package-lock.json
