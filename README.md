@@ -5,6 +5,7 @@ A Node.js authentication API built with Express, Drizzle ORM (PostgreSQL), and R
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) 20+
+- [pnpm](https://pnpm.io/) 11+ (`corepack enable` to activate)
 - [Docker](https://www.docker.com/) (for local Postgres and Redis)
 
 ## Getting started
@@ -12,7 +13,7 @@ A Node.js authentication API built with Express, Drizzle ORM (PostgreSQL), and R
 ### 1. Install dependencies
 
 ```bash
-npm install
+pnpm install
 ```
 
 ### 2. Configure environment
@@ -44,31 +45,32 @@ This starts:
 ### 4. Run database migrations
 
 ```bash
-npm run db:migrate
+pnpm db:migrate
 ```
 
 ### 5. Start the dev server
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 The API will be available at [http://localhost:3000](http://localhost:3000).
 
 ## Scripts
 
-| Command                | Description                            |
-| ---------------------- | -------------------------------------- |
-| `npm run dev`          | Start dev server with hot reload       |
-| `npm run build`        | Compile TypeScript to `dist/`          |
-| `npm start`            | Run compiled production build          |
-| `npm run db:generate`  | Generate migration from schema changes |
-| `npm run db:migrate`   | Apply pending migrations               |
-| `npm run db:studio`    | Open Drizzle Studio (database browser) |
-| `npm run lint`         | Run ESLint                             |
-| `npm run lint:fix`     | Run ESLint and auto-fix issues         |
-| `npm run format`       | Format code with Prettier              |
-| `npm run format:check` | Check formatting with Prettier         |
+| Command             | Description                            |
+| ------------------- | -------------------------------------- |
+| `pnpm dev`          | Start dev server with hot reload       |
+| `pnpm build`        | Compile TypeScript to `dist/`          |
+| `pnpm typecheck`    | Type-check without emitting `dist/`    |
+| `pnpm start`        | Run compiled production build          |
+| `pnpm db:generate`  | Generate migration from schema changes |
+| `pnpm db:migrate`   | Apply pending migrations               |
+| `pnpm db:studio`    | Open Drizzle Studio (database browser) |
+| `pnpm lint`         | Run ESLint                             |
+| `pnpm lint:fix`     | Run ESLint and auto-fix issues         |
+| `pnpm format`       | Format code with Prettier              |
+| `pnpm format:check` | Check formatting with Prettier         |
 
 ## API
 
@@ -106,8 +108,8 @@ src/
 Schema lives in `src/db/schema/`. After making changes:
 
 ```bash
-npm run db:generate   # create migration in drizzle/
-npm run db:migrate    # apply to database
+pnpm db:generate   # create migration in drizzle/
+pnpm db:migrate    # apply to database
 ```
 
 ### Current schema
@@ -125,8 +127,8 @@ npm run db:migrate    # apply to database
 ## Production
 
 ```bash
-npm run build
-NODE_ENV=production npm start
+pnpm build
+NODE_ENV=production pnpm start
 ```
 
 Set `DATABASE_URL` and `REDIS_URL` to your production services before starting.

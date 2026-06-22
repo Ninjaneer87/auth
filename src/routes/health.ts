@@ -1,9 +1,9 @@
-import { Router } from 'express';
+import { Router, type IRouter } from 'express';
 import { sql } from 'drizzle-orm';
 import { db } from '../db/index.js';
 import { redis } from '../redis/index.js';
 
-export const healthRouter = Router();
+export const healthRouter: IRouter = Router();
 
 healthRouter.get('/', async (_req, res) => {
   const checks = {
