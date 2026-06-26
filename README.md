@@ -187,7 +187,7 @@ pnpm build
 pnpm start
 ```
 
-Server runs the compiled API from `packages/server/dist`.
+Server runs the compiled API from `packages/server/dist`
 
 For the client:
 
